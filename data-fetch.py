@@ -86,6 +86,11 @@ def update_fifa_rankings():
         if not name_rank:
             log("  ⚠️ Wikipedia排名表格解析失败")
             return
+        # 过滤异常值（排名应在1-250之间，排除年份数据误抓）
+        name_rank = {k:v for k,v in name_rank.items() if 1 <= v <= 250}
+        if not name_rank:
+            log("  ⚠️ 所有排名值超出合理范围(1-250)")
+            return
         log(f"  ✅ Wikipedia获取 {len(name_rank)} 个排名（备选）")
 
     # 名称映射: English → Chinese team names used in HTML
@@ -130,6 +135,8 @@ def update_fifa_rankings():
         if en_name not in name_rank:
             continue
         rank = name_rank[en_name]
+        if not isinstance(rank, int) or rank < 1 or rank > 250:
+            continue  # 跳过异常值
         # Match pattern: name:'中国名',rank:'~XX'
         pattern = rf"(name:'{cn_name}',rank:'~)\d+"
         replacement = rf"\g<1>{rank}"
