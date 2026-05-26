@@ -181,6 +181,20 @@ nav a:hover,nav a.active{background:rgba(240,185,11,.12);color:var(--gold-light)
 .countdown-digits{display:inline-flex;align-items:center;gap:4px;font-weight:800;font-size:16px;color:var(--accent-red)}
 .countdown-digits .cd-num{background:rgba(239,68,68,.15);padding:2px 8px;border-radius:6px;min-width:28px;text-align:center}
 .countdown-digits .cd-label{font-size:10px;font-weight:400;color:var(--text-dim);text-transform:uppercase;margin-right:4px}
+/* Calendar view */
+.calendar-grid{display:grid;gap:12px}
+.calendar-day{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:14px;transition:all .2s}
+.calendar-day:hover{background:var(--bg-card-hover)}
+.calendar-day .cd-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.calendar-day .cd-date{font-weight:800;font-size:14px;color:var(--gold-light);min-width:60px}
+.calendar-day .cd-count{font-size:11px;color:var(--text-dim)}
+.calendar-day .cd-groups{font-size:11px;color:var(--text-dim)}
+.calendar-match{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px}
+.calendar-match:last-child{border-bottom:none}
+.calendar-match .cm-time{color:var(--text-dim);min-width:50px;font-size:11px}
+.calendar-match .cm-teams{flex:1;display:flex;align-items:center;gap:4px}
+.calendar-match .cm-score{font-weight:700;color:var(--gold-light);min-width:40px;text-align:center;font-size:13px}
+.calendar-match .cm-venue{font-size:10px;color:var(--text-dim);min-width:80px;text-align:right}
 /* User prediction */
 .pred-form{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px;max-width:600px;margin:16px auto}
 .pred-form h3{font-size:16px;font-weight:700;color:var(--text-bright);margin-bottom:16px;text-align:center}
@@ -309,9 +323,15 @@ nav a:hover,nav a.active{background:rgba(240,185,11,.12);color:var(--gold-light)
 <!-- Section: Groups -->
 <section class="section" id="groups">
   <h2 class="section-title">📊 小组赛</h2>
-  <p class="section-sub">全部12组——点击展开查看球队详情、赛程及胜负预测。数据来源：FIFA、Transfermarkt 及深度分析。</p>
+  <p class="section-sub">全部12组——点击展开查看球队详情、赛程及胜负预测。</p>
+
+  <div class="tabs" style="margin-bottom:20px">
+    <button class="tab-btn active" onclick="switchGroupView('groups')">🏟️ 小组列表</button>
+    <button class="tab-btn" onclick="switchGroupView('calendar')">📅 每日赛程</button>
+  </div>
 
   <div id="group-container"></div>
+  <div id="calendar-container" style="display:none"></div>
 </section>
 
 <div class="divider"></div>
@@ -922,6 +942,55 @@ const observer=new IntersectionObserver(entries=>{
   });
 },{rootMargin:'-100px 0px -60% 0px'});
 sections.forEach(s=>observer.observe(s));
+
+// ========== CALENDAR VIEW ==========
+function renderCalendar(){
+  const el=document.getElementById('calendar-container');
+  // Collect all matches from all groups into a date-sorted map
+  const byDate={};
+  Object.entries(GROUPS).forEach(([gk,g])=>{
+    g.matches.forEach(m=>{
+      const day=m.date.split(',')[0].trim();
+      if(!byDate[day]) byDate[day]={matches:[],groups:new Set()};
+      byDate[day].matches.push({...m,group:gk});
+      byDate[day].groups.add(gk);
+    });
+  });
+  // Sort dates: 6月11日, 6月12日, etc.
+  const dateOrder=Object.keys(byDate).sort((a,b)=>{
+    const ma=a.match(/(\d+)月(\d+)日/);
+    const mb=b.match(/(\d+)月(\d+)日/);
+    if(!ma||!mb)return 0;
+    return (parseInt(ma[1])*31+parseInt(ma[2]))-(parseInt(mb[1])*31+parseInt(mb[2]));
+  });
+  el.innerHTML=dateOrder.map(d=>{
+    const day=byDate[d];
+    const groups=[...day.groups].sort().join(', ');
+    return `<div class="calendar-day fade-in">
+      <div class="cd-header">
+        <span class="cd-date">${d}</span>
+        <span class="cd-count">${day.matches.length} 场</span>
+        <span class="cd-groups">${groups}</span>
+      </div>
+      ${day.matches.map(m=>{
+        const predHtml=m.pred?`<span class="cm-score">🔮 ${m.score}</span>`:`<span class="cm-score">${m.score}</span>`;
+        return `<div class="calendar-match">
+          <span class="cm-time">${m.date.split(',')[1]?.trim()||''}</span>
+          <span class="cm-teams"><span style="font-weight:600">${m.home}</span><span style="color:var(--text-dim)">vs</span><span style="font-weight:600">${m.away}</span></span>
+          ${predHtml}
+          <span class="cm-venue">${m.venue}</span>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+function switchGroupView(view){
+  document.querySelectorAll('#groups .tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('#groups .tab-btn')[view==='groups'?0:1].classList.add('active');
+  document.getElementById('group-container').style.display=view==='groups'?'block':'none';
+  document.getElementById('calendar-container').style.display=view==='calendar'?'block':'none';
+  if(view==='calendar')renderCalendar();
+}
 
 // ========== INIT ==========
 renderContenders();
