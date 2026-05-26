@@ -215,15 +215,20 @@ def update_news_section(headlines):
         news_html += f'<div style="padding:6px 0;font-size:13px;color:var(--text-dim);border-bottom:1px solid var(--border-glass)">📰 {h[:120]}</div>'
     news_html += "</div>"
 
-    # 在总览section末尾插入（在overview-grid之后）
-    marker = '<div class="divider"></div>'
-    # Insert after the overview section ends (before the divider that precedes contenders)
-    # Find the overview-card block's end
-    pattern = r'(<div class="divider">\s*</div>\s*\n\s*<!-- Section: Contenders)'
-    news_block = f'\n  <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:20px;margin-top:16px">'
-    news_block += f'<h3 style="font-size:15px;font-weight:700;color:var(--gold-light);margin-bottom:8px">📰 最新动态</h3>'
+    # In the overview section, find and replace existing news block, or insert after timeline table
+    # First, remove any existing news block (to avoid duplicates)
+    html = re.sub(
+        r'<div style="background:var\(--bg-glass\).*?最新动态.*?</div>\s*</div>',
+        '',
+        html,
+        flags=re.DOTALL
+    )
+    # Insert fresh news block after the timeline table
+    pattern = r'(</table>\s*\n\s*</section>\s*\n\s*<div class="divider">)'
+    news_block = '\n  <div style="background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:20px;margin-top:16px">'
+    news_block += '<h3 style="font-size:15px;font-weight:700;color:var(--gold-light);margin-bottom:8px">📰 最新动态</h3>'
     news_block += f'<div style="font-size:11px;color:var(--text-dim);margin-bottom:8px">自动抓取 · {datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}</div>'
-    news_block += news_html + "</div>\n\n\\1"
+    news_block += news_html + '</div>\n\n\\1'
 
     if re.search(pattern, html, re.DOTALL):
         html = re.sub(pattern, news_block, html, count=1, flags=re.DOTALL)
