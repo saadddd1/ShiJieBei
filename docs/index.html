@@ -166,6 +166,36 @@ nav a:hover,nav a.active{background:rgba(240,185,11,.12);color:var(--gold-light)
 .subheader{font-size:13px;color:var(--text-dim);margin:12px 0 8px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
 /* Score prediction badge */
 .pred-score{display:inline-flex;align-items:center;gap:4px;background:rgba(240,185,11,.1);border:1px solid rgba(240,185,11,.2);border-radius:6px;padding:2px 10px;font-size:12px;font-weight:700;color:var(--gold-light)}
+/* Bracket */
+.bracket{display:flex;gap:12px;overflow-x:auto;padding:16px 0;min-height:400px}
+.bracket-rnd{display:flex;flex-direction:column;gap:8px;min-width:160px;flex-shrink:0;justify-content:space-around}
+.bracket-rnd-title{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:8px}
+.bracket-game{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:8px;padding:8px 10px;font-size:11px;min-height:52px;display:flex;flex-direction:column;justify-content:center;transition:all .2s}
+.bracket-game:hover{border-color:rgba(240,185,11,.3);background:rgba(240,185,11,.04)}
+.bracket-game .bg-teams{display:flex;justify-content:space-between;gap:4px;font-weight:600;color:var(--text-bright)}
+.bracket-game .bg-score{color:var(--gold-light);font-weight:700;font-size:12px;text-align:center}
+.bracket-game .bg-meta{font-size:10px;color:var(--text-dim);margin-top:2px}
+.bracket-winner{background:rgba(240,185,11,.12);border-color:var(--gold-dark)!important}
+.bracket-winner .bg-teams{color:var(--gold-light)}
+/* Countdown digits */
+.countdown-digits{display:inline-flex;align-items:center;gap:4px;font-weight:800;font-size:16px;color:var(--accent-red)}
+.countdown-digits .cd-num{background:rgba(239,68,68,.15);padding:2px 8px;border-radius:6px;min-width:28px;text-align:center}
+.countdown-digits .cd-label{font-size:10px;font-weight:400;color:var(--text-dim);text-transform:uppercase;margin-right:4px}
+/* User prediction */
+.pred-form{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px;max-width:600px;margin:16px auto}
+.pred-form h3{font-size:16px;font-weight:700;color:var(--text-bright);margin-bottom:16px;text-align:center}
+.pred-form select,.pred-form button{width:100%;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:12px;border:1px solid var(--border-glass);background:rgba(255,255,255,.06);color:var(--text-bright);cursor:pointer}
+.pred-form select option{background:var(--bg-deep);color:var(--text)}
+.pred-form button{background:linear-gradient(135deg,var(--gold),var(--amber));color:#000;border:none;transition:all .2s}
+.pred-form button:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(240,185,11,.3)}
+.pred-result{text-align:center;padding:16px;border-radius:8px;margin-top:12px;display:none}
+.pred-result.show{display:block}
+.pred-result.match{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--accent-green)}
+.pred-result.mismatch{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--accent-red)}
+/* H2H / form badges / extra fields */
+.extra-badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600;margin-left:4px}
+.extra-form{font-size:11px;color:var(--text-dim);margin-top:4px}
+.extra-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;font-size:11px;color:var(--text-dim)}
 </style>
 </head>
 <body>
@@ -186,7 +216,7 @@ nav a:hover,nav a.active{background:rgba(240,185,11,.12);color:var(--gold-light)
       <div class="hero-stat"><div class="num">104</div><div class="label">比赛场次</div></div>
       <div class="hero-stat"><div class="num">16</div><div class="label">主办城市</div></div>
     </div>
-    <div class="countdown">🏆 2026年6月11日 – 7月19日 <span>·</span> 揭幕战: 🇲🇽 墨西哥 vs 🇿🇦 南非</div>
+    <div class="countdown"><span id="countdown-digits" class="countdown-digits">计算中...</span> <span>·</span> 揭幕战: 🇲🇽 墨西哥 vs 🇿🇦 南非</div>
   </div>
 </section>
 
@@ -197,6 +227,8 @@ nav a:hover,nav a.active{background:rgba(240,185,11,.12);color:var(--gold-light)
     <a href="#contenders">🏆 夺冠热门</a>
     <a href="#groups">📊 小组赛</a>
     <a href="#knockout">🏆 淘汰赛</a>
+    <a href="#bracket">🌳 对阵预测</a>
+    <a href="#predict">🎯 你的预测</a>
     <a href="#groupA">A</a><a href="#groupB">B</a><a href="#groupC">C</a><a href="#groupD">D</a>
     <a href="#groupE">E</a><a href="#groupF">F</a><a href="#groupG">G</a><a href="#groupH">H</a>
     <a href="#groupI">I</a><a href="#groupJ">J</a><a href="#groupK">K</a><a href="#groupL">L</a>
@@ -348,6 +380,34 @@ nav a:hover,nav a.active{background:rgba(240,185,11,.12);color:var(--gold-light)
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- Section: Bracket Prediction -->
+<section class="section" id="bracket">
+  <h2 class="section-title">🏆 淘汰赛对阵预测</h2>
+  <p class="section-sub">基于小组赛预测排名生成的完整淘汰赛对阵树。点击比赛查看详情。</p>
+  <div id="bracket-container" class="bracket"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Section: User Prediction -->
+<section class="section" id="predict">
+  <h2 class="section-title">🎯 你的预测</h2>
+  <p class="section-sub">选出你看好的冠军，跟 AI 预测比比看！</p>
+  <div class="pred-form">
+    <h3>🏆 预测冠军</h3>
+    <select id="user-champion">
+      <option value="">— 选择你的冠军 —</option>
+    </select>
+    <button onclick="submitPrediction()">提交预测</button>
+    <div id="pred-result" class="pred-result"></div>
+    <div style="font-size:12px;color:var(--text-dim);text-align:center;margin-top:12px">
+      AI预测冠军: <strong id="ai-champion-display" style="color:var(--gold-light)"></strong>
+    </div>
+  </div>
+</section>
+
 </div><!-- .container -->
 
 <footer style="text-align:center;padding:40px 24px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border-glass);position:relative;z-index:1">
@@ -385,10 +445,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月11日, 3PM',home:'🇲🇽 墨西哥',away:'🇿🇦 南非',score:'2-0',pred:'预测',venue:'墨西哥城·阿兹特克'},
       {round:1,date:'6月11日, 10PM',home:'🇰🇷 韩国',away:'🇨🇿 捷克',score:'1-1',pred:'预测',venue:'瓜达拉哈拉·阿克隆'},
-      {round:2,date:'6月18日, 12PM',home:'🇨🇿 捷克',away:'🇿🇦 南非',score:'—',pred:'',venue:'亚特兰大·梅赛德斯'},
-      {round:2,date:'6月18日, 9PM',home:'🇲🇽 墨西哥',away:'🇰🇷 韩国',score:'—',pred:'',venue:'瓜达拉哈拉·阿克隆'},
-      {round:3,date:'6月24日, 9PM',home:'🇨🇿 捷克',away:'🇲🇽 墨西哥',score:'—',pred:'',venue:'墨西哥城·阿兹特克'},
-      {round:3,date:'6月24日, 9PM',home:'🇿🇦 南非',away:'🇰🇷 韩国',score:'—',pred:'',venue:'蒙特雷·BBVA'}
+      {round:2,date:'6月18日, 12PM',home:'🇨🇿 捷克',away:'🇿🇦 南非',score:'2-0',pred:'预测',venue:'亚特兰大·梅赛德斯'},
+      {round:2,date:'6月18日, 9PM',home:'🇲🇽 墨西哥',away:'🇰🇷 韩国',score:'2-1',pred:'预测',venue:'瓜达拉哈拉·阿克隆'},
+      {round:3,date:'6月24日, 9PM',home:'🇨🇿 捷克',away:'🇲🇽 墨西哥',score:'0-2',pred:'预测',venue:'墨西哥城·阿兹特克'},
+      {round:3,date:'6月24日, 9PM',home:'🇿🇦 南非',away:'🇰🇷 韩国',score:'0-1',pred:'预测',venue:'蒙特雷·BBVA'}
     ]
   },
   B:{
@@ -403,10 +463,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月12日, 3PM',home:'🇨🇦 加拿大',away:'🇧🇦 波黑',score:'1-1',pred:'预测',venue:'多伦多·BMO'},
       {round:1,date:'6月13日, 3PM',home:'🇶🇦 卡塔尔',away:'🇨🇭 瑞士',score:'0-2',pred:'预测',venue:'旧金山·李维斯'},
-      {round:2,date:'6月18日, 3PM',home:'🇨🇭 瑞士',away:'🇧🇦 波黑',score:'—',pred:'',venue:'洛杉矶·SoFi'},
-      {round:2,date:'6月18日, 6PM',home:'🇨🇦 加拿大',away:'🇶🇦 卡塔尔',score:'—',pred:'',venue:'温哥华·BC Place'},
-      {round:3,date:'6月24日, 3PM',home:'🇨🇭 瑞士',away:'🇨🇦 加拿大',score:'—',pred:'',venue:'温哥华·BC Place'},
-      {round:3,date:'6月24日, 3PM',home:'🇧🇦 波黑',away:'🇶🇦 卡塔尔',score:'—',pred:'',venue:'西雅图·流明'}
+      {round:2,date:'6月18日, 3PM',home:'🇨🇭 瑞士',away:'🇧🇦 波黑',score:'2-0',pred:'预测',venue:'洛杉矶·SoFi'},
+      {round:2,date:'6月18日, 6PM',home:'🇨🇦 加拿大',away:'🇶🇦 卡塔尔',score:'2-0',pred:'预测',venue:'温哥华·BC Place'},
+      {round:3,date:'6月24日, 3PM',home:'🇨🇭 瑞士',away:'🇨🇦 加拿大',score:'1-0',pred:'预测',venue:'温哥华·BC Place'},
+      {round:3,date:'6月24日, 3PM',home:'🇧🇦 波黑',away:'🇶🇦 卡塔尔',score:'1-0',pred:'预测',venue:'西雅图·流明'}
     ]
   },
   C:{
@@ -421,10 +481,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月13日, 6PM',home:'🇧🇷 巴西',away:'🇲🇦 摩洛哥',score:'1-0',pred:'预测',venue:'纽约/新泽西·大都会'},
       {round:1,date:'6月13日, 9PM',home:'🇭🇹 海地',away:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰',score:'0-2',pred:'预测',venue:'波士顿·吉列'},
-      {round:2,date:'6月19日, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰',away:'🇲🇦 摩洛哥',score:'—',pred:'',venue:'波士顿·吉列'},
-      {round:2,date:'6月19日, 9PM',home:'🇧🇷 巴西',away:'🇭🇹 海地',score:'—',pred:'',venue:'费城·林肯金融'},
-      {round:3,date:'6月24日, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰',away:'🇧🇷 巴西',score:'—',pred:'',venue:'迈阿密·硬石'},
-      {round:3,date:'6月24日, 6PM',home:'🇲🇦 摩洛哥',away:'🇭🇹 海地',score:'—',pred:'',venue:'亚特兰大·梅赛德斯'}
+      {round:2,date:'6月19日, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰',away:'🇲🇦 摩洛哥',score:'0-2',pred:'预测',venue:'波士顿·吉列'},
+      {round:2,date:'6月19日, 9PM',home:'🇧🇷 巴西',away:'🇭🇹 海地',score:'4-0',pred:'预测',venue:'费城·林肯金融'},
+      {round:3,date:'6月24日, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰',away:'🇧🇷 巴西',score:'0-3',pred:'预测',venue:'迈阿密·硬石'},
+      {round:3,date:'6月24日, 6PM',home:'🇲🇦 摩洛哥',away:'🇭🇹 海地',score:'3-0',pred:'预测',venue:'亚特兰大·梅赛德斯'}
     ]
   },
   D:{
@@ -439,10 +499,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月12日, 9PM',home:'🇺🇸 美国',away:'🇵🇾 巴拉圭',score:'1-0',pred:'预测',venue:'洛杉矶·SoFi'},
       {round:1,date:'6月13日, 12AM',home:'🇦🇺 澳大利亚',away:'🇹🇷 土耳其',score:'0-1',pred:'预测',venue:'温哥华·BC Place'},
-      {round:2,date:'6月19日, 3PM',home:'🇺🇸 美国',away:'🇦🇺 澳大利亚',score:'—',pred:'',venue:'西雅图·流明'},
-      {round:2,date:'6月19日, 12AM',home:'🇹🇷 土耳其',away:'🇵🇾 巴拉圭',score:'—',pred:'',venue:'旧金山·李维斯'},
-      {round:3,date:'6月25日, 10PM',home:'🇹🇷 土耳其',away:'🇺🇸 美国',score:'—',pred:'',venue:'洛杉矶·SoFi'},
-      {round:3,date:'6月25日, 10PM',home:'🇵🇾 巴拉圭',away:'🇦🇺 澳大利亚',score:'—',pred:'',venue:'旧金山·李维斯'}
+      {round:2,date:'6月19日, 3PM',home:'🇺🇸 美国',away:'🇦🇺 澳大利亚',score:'2-0',pred:'预测',venue:'西雅图·流明'},
+      {round:2,date:'6月19日, 12AM',home:'🇹🇷 土耳其',away:'🇵🇾 巴拉圭',score:'1-0',pred:'预测',venue:'旧金山·李维斯'},
+      {round:3,date:'6月25日, 10PM',home:'🇹🇷 土耳其',away:'🇺🇸 美国',score:'1-2',pred:'预测',venue:'洛杉矶·SoFi'},
+      {round:3,date:'6月25日, 10PM',home:'🇵🇾 巴拉圭',away:'🇦🇺 澳大利亚',score:'1-1',pred:'预测',venue:'旧金山·李维斯'}
     ]
   },
   E:{
@@ -457,10 +517,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月14日, 1PM',home:'🇩🇪 德国',away:'🇨🇼 库拉索',score:'5-0',pred:'预测',venue:'休斯顿·NRG'},
       {round:1,date:'6月14日, 7PM',home:'🇨🇮 科特迪瓦',away:'🇪🇨 厄瓜多尔',score:'1-1',pred:'预测',venue:'费城·林肯金融'},
-      {round:2,date:'6月20日, 1PM',home:'🇩🇪 德国',away:'🇨🇮 科特迪瓦',score:'—',pred:'',venue:'多伦多·BMO'},
-      {round:2,date:'6月20日, 7PM',home:'🇪🇨 厄瓜多尔',away:'🇨🇼 库拉索',score:'—',pred:'',venue:'堪萨斯城·箭头'},
-      {round:3,date:'6月25日, 8PM',home:'🇨🇼 库拉索',away:'🇨🇮 科特迪瓦',score:'—',pred:'',venue:'费城·林肯金融'},
-      {round:3,date:'6月25日, 8PM',home:'🇪🇨 厄瓜多尔',away:'🇩🇪 德国',score:'—',pred:'',venue:'纽约/新泽西·大都会'}
+      {round:2,date:'6月20日, 1PM',home:'🇩🇪 德国',away:'🇨🇮 科特迪瓦',score:'2-0',pred:'预测',venue:'多伦多·BMO'},
+      {round:2,date:'6月20日, 7PM',home:'🇪🇨 厄瓜多尔',away:'🇨🇼 库拉索',score:'4-0',pred:'预测',venue:'堪萨斯城·箭头'},
+      {round:3,date:'6月25日, 8PM',home:'🇨🇼 库拉索',away:'🇨🇮 科特迪瓦',score:'0-3',pred:'预测',venue:'费城·林肯金融'},
+      {round:3,date:'6月25日, 8PM',home:'🇪🇨 厄瓜多尔',away:'🇩🇪 德国',score:'0-2',pred:'预测',venue:'纽约/新泽西·大都会'}
     ]
   },
   F:{
@@ -475,10 +535,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月14日, 4PM',home:'🇳🇱 荷兰',away:'🇯🇵 日本',score:'2-0',pred:'预测',venue:'达拉斯·AT&T'},
       {round:1,date:'6月14日, 10PM',home:'🇸🇪 瑞典',away:'🇹🇳 突尼斯',score:'1-0',pred:'预测',venue:'蒙特雷·BBVA'},
-      {round:2,date:'6月20日, 4PM',home:'🇳🇱 荷兰',away:'🇸🇪 瑞典',score:'—',pred:'',venue:'休斯顿·NRG'},
-      {round:2,date:'6月20日, 10PM',home:'🇹🇳 突尼斯',away:'🇯🇵 日本',score:'—',pred:'',venue:'蒙特雷·BBVA'},
-      {round:3,date:'6月25日, 10PM',home:'🇯🇵 日本',away:'🇸🇪 瑞典',score:'—',pred:'',venue:'达拉斯·AT&T'},
-      {round:3,date:'6月25日, 10PM',home:'🇹🇳 突尼斯',away:'🇳🇱 荷兰',score:'—',pred:'',venue:'堪萨斯城·箭头'}
+      {round:2,date:'6月20日, 4PM',home:'🇳🇱 荷兰',away:'🇸🇪 瑞典',score:'2-0',pred:'预测',venue:'休斯顿·NRG'},
+      {round:2,date:'6月20日, 10PM',home:'🇹🇳 突尼斯',away:'🇯🇵 日本',score:'0-1',pred:'预测',venue:'蒙特雷·BBVA'},
+      {round:3,date:'6月25日, 10PM',home:'🇯🇵 日本',away:'🇸🇪 瑞典',score:'1-1',pred:'预测',venue:'达拉斯·AT&T'},
+      {round:3,date:'6月25日, 10PM',home:'🇹🇳 突尼斯',away:'🇳🇱 荷兰',score:'0-3',pred:'预测',venue:'堪萨斯城·箭头'}
     ]
   },
   G:{
@@ -493,10 +553,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月15日, 3PM',home:'🇧🇪 比利时',away:'🇪🇬 埃及',score:'1-1',pred:'预测',venue:'西雅图·流明'},
       {round:1,date:'6月15日, 9PM',home:'🇮🇷 伊朗',away:'🇳🇿 新西兰',score:'1-0',pred:'预测',venue:'洛杉矶·SoFi'},
-      {round:2,date:'6月21日, 3PM',home:'🇧🇪 比利时',away:'🇮🇷 伊朗',score:'—',pred:'',venue:'洛杉矶·SoFi'},
-      {round:2,date:'6月21日, 10PM',home:'🇳🇿 新西兰',away:'🇪🇬 埃及',score:'—',pred:'',venue:'温哥华·BC Place'},
-      {round:3,date:'6月26日, 3PM',home:'🇪🇬 埃及',away:'🇮🇷 伊朗',score:'—',pred:'',venue:'西雅图·流明'},
-      {round:3,date:'6月26日, 3PM',home:'🇳🇿 新西兰',away:'🇧🇪 比利时',score:'—',pred:'',venue:'温哥华·BC Place'}
+      {round:2,date:'6月21日, 3PM',home:'🇧🇪 比利时',away:'🇮🇷 伊朗',score:'2-0',pred:'预测',venue:'洛杉矶·SoFi'},
+      {round:2,date:'6月21日, 10PM',home:'🇳🇿 新西兰',away:'🇪🇬 埃及',score:'0-1',pred:'预测',venue:'温哥华·BC Place'},
+      {round:3,date:'6月26日, 3PM',home:'🇪🇬 埃及',away:'🇮🇷 伊朗',score:'1-0',pred:'预测',venue:'西雅图·流明'},
+      {round:3,date:'6月26日, 3PM',home:'🇳🇿 新西兰',away:'🇧🇪 比利时',score:'0-3',pred:'预测',venue:'温哥华·BC Place'}
     ]
   },
   H:{
@@ -511,10 +571,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月15日, 12PM',home:'🇪🇸 西班牙',away:'🇨🇻 佛得角',score:'4-0',pred:'预测',venue:'亚特兰大·梅赛德斯'},
       {round:1,date:'6月15日, 6PM',home:'🇸🇦 沙特',away:'🇺🇾 乌拉圭',score:'0-2',pred:'预测',venue:'迈阿密·硬石'},
-      {round:2,date:'6月21日, 12PM',home:'🇪🇸 西班牙',away:'🇸🇦 沙特',score:'—',pred:'',venue:'亚特兰大·梅赛德斯'},
-      {round:2,date:'6月21日, 6PM',home:'🇺🇾 乌拉圭',away:'🇨🇻 佛得角',score:'—',pred:'',venue:'迈阿密·硬石'},
-      {round:3,date:'6月26日, 8PM',home:'🇨🇻 佛得角',away:'🇸🇦 沙特',score:'—',pred:'',venue:'休斯顿·NRG'},
-      {round:3,date:'6月26日, 8PM',home:'🇺🇾 乌拉圭',away:'🇪🇸 西班牙',score:'—',pred:'',venue:'瓜达拉哈拉·阿克隆'}
+      {round:2,date:'6月21日, 12PM',home:'🇪🇸 西班牙',away:'🇸🇦 沙特',score:'3-0',pred:'预测',venue:'亚特兰大·梅赛德斯'},
+      {round:2,date:'6月21日, 6PM',home:'🇺🇾 乌拉圭',away:'🇨🇻 佛得角',score:'2-0',pred:'预测',venue:'迈阿密·硬石'},
+      {round:3,date:'6月26日, 8PM',home:'🇨🇻 佛得角',away:'🇸🇦 沙特',score:'1-1',pred:'预测',venue:'休斯顿·NRG'},
+      {round:3,date:'6月26日, 8PM',home:'🇺🇾 乌拉圭',away:'🇪🇸 西班牙',score:'0-2',pred:'预测',venue:'瓜达拉哈拉·阿克隆'}
     ]
   },
   I:{
@@ -529,10 +589,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月16日, 3PM',home:'🇫🇷 法国',away:'🇸🇳 塞内加尔',score:'2-0',pred:'预测',venue:'纽约/新泽西·大都会'},
       {round:1,date:'6月16日, 6PM',home:'🇮🇶 伊拉克',away:'🇳🇴 挪威',score:'0-3',pred:'预测',venue:'波士顿·吉列'},
-      {round:2,date:'6月22日, 5PM',home:'🇳🇴 挪威',away:'🇸🇳 塞内加尔',score:'—',pred:'',venue:'纽约/新泽西·大都会'},
-      {round:2,date:'6月22日, 8PM',home:'🇫🇷 法国',away:'🇮🇶 伊拉克',score:'—',pred:'',venue:'费城·林肯金融'},
-      {round:3,date:'6月26日, 12PM',home:'🇳🇴 挪威',away:'🇫🇷 法国',score:'—',pred:'',venue:'波士顿·吉列'},
-      {round:3,date:'6月26日, 12PM',home:'🇸🇳 塞内加尔',away:'🇮🇶 伊拉克',score:'—',pred:'',venue:'多伦多·BMO'}
+      {round:2,date:'6月22日, 5PM',home:'🇳🇴 挪威',away:'🇸🇳 塞内加尔',score:'2-1',pred:'预测',venue:'纽约/新泽西·大都会'},
+      {round:2,date:'6月22日, 8PM',home:'🇫🇷 法国',away:'🇮🇶 伊拉克',score:'3-0',pred:'预测',venue:'费城·林肯金融'},
+      {round:3,date:'6月26日, 12PM',home:'🇳🇴 挪威',away:'🇫🇷 法国',score:'0-2',pred:'预测',venue:'波士顿·吉列'},
+      {round:3,date:'6月26日, 12PM',home:'🇸🇳 塞内加尔',away:'🇮🇶 伊拉克',score:'2-0',pred:'预测',venue:'多伦多·BMO'}
     ]
   },
   J:{
@@ -547,10 +607,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月16日, 9PM',home:'🇦🇷 阿根廷',away:'🇩🇿 阿尔及利亚',score:'2-0',pred:'预测',venue:'堪萨斯城·箭头'},
       {round:1,date:'6月17日, 12AM',home:'🇦🇹 奥地利',away:'🇯🇴 约旦',score:'2-0',pred:'预测',venue:'旧金山·李维斯'},
-      {round:2,date:'6月22日, 1PM',home:'🇦🇷 阿根廷',away:'🇦🇹 奥地利',score:'—',pred:'',venue:'达拉斯·AT&T'},
-      {round:2,date:'6月22日, 11PM',home:'🇯🇴 约旦',away:'🇩🇿 阿尔及利亚',score:'—',pred:'',venue:'旧金山·李维斯'},
-      {round:3,date:'6月27日, 10PM',home:'🇩🇿 阿尔及利亚',away:'🇦🇹 奥地利',score:'—',pred:'',venue:'堪萨斯城·箭头'},
-      {round:3,date:'6月27日, 10PM',home:'🇯🇴 约旦',away:'🇦🇷 阿根廷',score:'—',pred:'',venue:'达拉斯·AT&T'}
+      {round:2,date:'6月22日, 1PM',home:'🇦🇷 阿根廷',away:'🇦🇹 奥地利',score:'2-0',pred:'预测',venue:'达拉斯·AT&T'},
+      {round:2,date:'6月22日, 11PM',home:'🇯🇴 约旦',away:'🇩🇿 阿尔及利亚',score:'0-1',pred:'预测',venue:'旧金山·李维斯'},
+      {round:3,date:'6月27日, 10PM',home:'🇩🇿 阿尔及利亚',away:'🇦🇹 奥地利',score:'1-2',pred:'预测',venue:'堪萨斯城·箭头'},
+      {round:3,date:'6月27日, 10PM',home:'🇯🇴 约旦',away:'🇦🇷 阿根廷',score:'0-3',pred:'预测',venue:'达拉斯·AT&T'}
     ]
   },
   K:{
@@ -565,10 +625,10 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月17日, 1PM',home:'🇵🇹 葡萄牙',away:'🇨🇩 刚果金',score:'3-0',pred:'预测',venue:'休斯顿·NRG'},
       {round:1,date:'6月17日, 10PM',home:'🇺🇿 乌兹别克',away:'🇨🇴 哥伦比亚',score:'0-2',pred:'预测',venue:'墨西哥城·阿兹特克'},
-      {round:2,date:'6月23日, 1PM',home:'🇵🇹 葡萄牙',away:'🇺🇿 乌兹别克',score:'—',pred:'',venue:'休斯顿·NRG'},
-      {round:2,date:'6月23日, 10PM',home:'🇨🇴 哥伦比亚',away:'🇨🇩 刚果金',score:'—',pred:'',venue:'瓜达拉哈拉·阿克隆'},
-      {round:3,date:'6月27日, 7:30PM',home:'🇨🇴 哥伦比亚',away:'🇵🇹 葡萄牙',score:'—',pred:'',venue:'迈阿密·硬石'},
-      {round:3,date:'6月27日, 7:30PM',home:'🇨🇩 刚果金',away:'🇺🇿 乌兹别克',score:'—',pred:'',venue:'亚特兰大·梅赛德斯'}
+      {round:2,date:'6月23日, 1PM',home:'🇵🇹 葡萄牙',away:'🇺🇿 乌兹别克',score:'2-0',pred:'预测',venue:'休斯顿·NRG'},
+      {round:2,date:'6月23日, 10PM',home:'🇨🇴 哥伦比亚',away:'🇨🇩 刚果金',score:'2-0',pred:'预测',venue:'瓜达拉哈拉·阿克隆'},
+      {round:3,date:'6月27日, 7:30PM',home:'🇨🇴 哥伦比亚',away:'🇵🇹 葡萄牙',score:'1-2',pred:'预测',venue:'迈阿密·硬石'},
+      {round:3,date:'6月27日, 7:30PM',home:'🇨🇩 刚果金',away:'🇺🇿 乌兹别克',score:'0-0',pred:'预测',venue:'亚特兰大·梅赛德斯'}
     ]
   },
   L:{
@@ -583,49 +643,184 @@ const GROUPS = {
     matches:[
       {round:1,date:'6月17日, 4PM',home:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',away:'🇭🇷 克罗地亚',score:'2-1',pred:'预测',venue:'达拉斯·AT&T'},
       {round:1,date:'6月17日, 7PM',home:'🇬🇭 加纳',away:'🇵🇦 巴拿马',score:'2-0',pred:'预测',venue:'多伦多·BMO'},
-      {round:2,date:'6月23日, 4PM',home:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',away:'🇬🇭 加纳',score:'—',pred:'',venue:'波士顿·吉列'},
-      {round:2,date:'6月23日, 7PM',home:'🇵🇦 巴拿马',away:'🇭🇷 克罗地亚',score:'—',pred:'',venue:'多伦多·BMO'},
-      {round:3,date:'6月27日, 5PM',home:'🇵🇦 巴拿马',away:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',score:'—',pred:'',venue:'纽约/新泽西·大都会'},
-      {round:3,date:'6月27日, 5PM',home:'🇭🇷 克罗地亚',away:'🇬🇭 加纳',score:'—',pred:'',venue:'费城·林肯金融'}
+      {round:2,date:'6月23日, 4PM',home:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',away:'🇬🇭 加纳',score:'3-0',pred:'预测',venue:'波士顿·吉列'},
+      {round:2,date:'6月23日, 7PM',home:'🇵🇦 巴拿马',away:'🇭🇷 克罗地亚',score:'0-2',pred:'预测',venue:'多伦多·BMO'},
+      {round:3,date:'6月27日, 5PM',home:'🇵🇦 巴拿马',away:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',score:'0-4',pred:'预测',venue:'纽约/新泽西·大都会'},
+      {round:3,date:'6月27日, 5PM',home:'🇭🇷 克罗地亚',away:'🇬🇭 加纳',score:'2-0',pred:'预测',venue:'费城·林肯金融'}
     ]
   }
 };
 
 const CONTENDERS = [
-  {rank:1,flag:'🇪🇸',name:'西班牙',odds:'+450~500',opta:'16.08%',public:'13.9%',rating:5,bar:100,color:'#f0b90b'},
-  {rank:2,flag:'🇫🇷',name:'法国',odds:'+470~500',opta:'12.78%',public:'14.0%',rating:5,bar:79,color:'#3b82f6'},
-  {rank:3,flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'英格兰',odds:'+550~650',opta:'11.01%',public:'13.4%',rating:5,bar:68,color:'#ef4444'},
-  {rank:4,flag:'🇦🇷',name:'阿根廷',odds:'+800~950',opta:'10.02%',public:'6.9%',rating:4,bar:62,color:'#22c55e'},
-  {rank:5,flag:'🇵🇹',name:'葡萄牙',odds:'+1000~1100',opta:'6.84%',public:'10.2%',rating:4,bar:43,color:'#a855f7'},
-  {rank:6,flag:'🇧🇷',name:'巴西',odds:'+750~800',opta:'6.48%',public:'8.1%',rating:4,bar:40,color:'#f59e0b'},
-  {rank:7,flag:'🇩🇪',name:'德国',odds:'+1100~1400',opta:'5.66%',public:'5.5%',rating:3,bar:35,color:'#6366f1'},
-  {rank:8,flag:'🇳🇱',name:'荷兰',odds:'+1800~2100',opta:'3.84%',public:'3.2%',rating:3,bar:24,color:'#ec4899'}
+  {rank:1,flag:'🇪🇸',name:'西班牙',odds:'+450~500',opta:'16.08%',public:'13.9%',rating:5,bar:100,color:'#f0b90b',depth:4,exp:5,tact:5,injury:'梅西+加维伤缺',form:'W-W-W-W-D'},
+  {rank:2,flag:'🇫🇷',name:'法国',odds:'+470~500',opta:'12.78%',public:'14.0%',rating:5,bar:79,color:'#3b82f6',depth:5,exp:5,tact:4,injury:'迈尼昂恢复中',form:'W-D-W-W-W'},
+  {rank:3,flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'英格兰',odds:'+550~650',opta:'11.01%',public:'13.4%',rating:5,bar:68,color:'#ef4444',depth:5,exp:4,tact:4,injury:'无重大伤病',form:'W-W-D-W-W'},
+  {rank:4,flag:'🇦🇷',name:'阿根廷',odds:'+800~950',opta:'10.02%',public:'6.9%',rating:4,bar:62,color:'#22c55e',depth:3,exp:5,tact:4,injury:'梅西体能管理',form:'W-W-L-W-D'},
+  {rank:5,flag:'🇵🇹',name:'葡萄牙',odds:'+1000~1100',opta:'6.84%',public:'10.2%',rating:4,bar:43,color:'#a855f7',depth:4,exp:3,tact:4,injury:'无重大伤病',form:'W-W-W-L-W'},
+  {rank:6,flag:'🇧🇷',name:'巴西',odds:'+750~800',opta:'6.48%',public:'8.1%',rating:4,bar:40,color:'#f59e0b',depth:4,exp:4,tact:3,injury:'内马尔状态未定',form:'W-L-W-D-W'},
+  {rank:7,flag:'🇩🇪',name:'德国',odds:'+1100~1400',opta:'5.66%',public:'5.5%',rating:3,bar:35,color:'#6366f1',depth:3,exp:3,tact:4,injury:'无重大伤病',form:'D-W-W-L-W'},
+  {rank:8,flag:'🇳🇱',name:'荷兰',odds:'+1800~2100',opta:'3.84%',public:'3.2%',rating:3,bar:24,color:'#ec4899',depth:3,exp:3,tact:3,injury:'德容恢复中',form:'W-D-W-D-L'}
 ];
 
-// ========== RENDER ==========
+// ========== PREDICTED GROUP STANDINGS ==========
+const STANDINGS = {
+  A:{w:'🇲🇽 墨西哥',r:'🇰🇷 韩国',t:'🇨🇿 捷克',f:'🇿🇦 南非'},
+  B:{w:'🇨🇭 瑞士',r:'🇨🇦 加拿大',t:'🇧🇦 波黑',f:'🇶🇦 卡塔尔'},
+  C:{w:'🇧🇷 巴西',r:'🇲🇦 摩洛哥',t:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰',f:'🇭🇹 海地'},
+  D:{w:'🇺🇸 美国',r:'🇹🇷 土耳其',t:'🇦🇺 澳大利亚',f:'🇵🇾 巴拉圭'},
+  E:{w:'🇩🇪 德国',r:'🇪🇨 厄瓜多尔',t:'🇨🇮 科特迪瓦',f:'🇨🇼 库拉索'},
+  F:{w:'🇳🇱 荷兰',r:'🇸🇪 瑞典',t:'🇯🇵 日本',f:'🇹🇳 突尼斯'},
+  G:{w:'🇧🇪 比利时',r:'🇪🇬 埃及',t:'🇮🇷 伊朗',f:'🇳🇿 新西兰'},
+  H:{w:'🇪🇸 西班牙',r:'🇺🇾 乌拉圭',t:'🇸🇦 沙特',f:'🇨🇻 佛得角'},
+  I:{w:'🇫🇷 法国',r:'🇳🇴 挪威',t:'🇸🇳 塞内加尔',f:'🇮🇶 伊拉克'},
+  J:{w:'🇦🇷 阿根廷',r:'🇦🇹 奥地利',t:'🇩🇿 阿尔及利亚',f:'🇯🇴 约旦'},
+  K:{w:'🇵🇹 葡萄牙',r:'🇨🇴 哥伦比亚',t:'🇨🇩 刚果金',f:'🇺🇿 乌兹别克'},
+  L:{w:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',r:'🇭🇷 克罗地亚',t:'🇬🇭 加纳',f:'🇵🇦 巴拿马'}
+};
+// Best 3rd places that advance (8 of 12): pick strongest 3rd teams
+const BEST_THIRD = ['C','D','E','F','G','I','J','L'];
+
+// ========== KNOCKOUT BRACKET ==========
+const BRACKET = [
+  // Round of 32 (Matches 73-88) → winner advances to R16
+  {rnd:'32强',id:73,t1:STANDINGS.A.r,t2:STANDINGS.B.r,score:'1-0',venue:'洛杉矶·SoFi'},
+  {rnd:'32强',id:74,t1:STANDINGS.E.w,t2:'3rd(B)',score:'3-0',venue:'波士顿·吉列'},
+  {rnd:'32强',id:75,t1:STANDINGS.F.w,t2:STANDINGS.C.r,score:'2-1',venue:'蒙特雷·BBVA'},
+  {rnd:'32强',id:76,t1:STANDINGS.C.w,t2:STANDINGS.F.r,score:'2-0',venue:'休斯顿·NRG'},
+  {rnd:'32强',id:77,t1:STANDINGS.I.w,t2:'3rd(D)',score:'3-0',venue:'纽约/新泽西·大都会'},
+  {rnd:'32强',id:78,t1:STANDINGS.E.r,t2:STANDINGS.I.r,score:'2-0',venue:'达拉斯·AT&T'},
+  {rnd:'32强',id:79,t1:STANDINGS.A.w,t2:'3rd(E)',score:'2-0',venue:'墨西哥城·阿兹特克'},
+  {rnd:'32强',id:80,t1:STANDINGS.L.w,t2:'3rd(F)',score:'3-0',venue:'亚特兰大·梅赛德斯'},
+  {rnd:'32强',id:81,t1:STANDINGS.D.w,t2:'3rd(G)',score:'2-0',venue:'旧金山·李维斯'},
+  {rnd:'32强',id:82,t1:STANDINGS.G.w,t2:'3rd(I)',score:'2-1',venue:'西雅图·流明'},
+  {rnd:'32强',id:83,t1:STANDINGS.K.r,t2:STANDINGS.L.r,score:'1-0',venue:'多伦多·BMO'},
+  {rnd:'32强',id:84,t1:STANDINGS.H.w,t2:STANDINGS.J.r,score:'2-0',venue:'洛杉矶·SoFi'},
+  {rnd:'32强',id:85,t1:STANDINGS.B.w,t2:'3rd(J)',score:'1-0',venue:'温哥华·BC Place'},
+  {rnd:'32强',id:86,t1:STANDINGS.J.w,t2:STANDINGS.H.r,score:'2-1',venue:'迈阿密·硬石'},
+  {rnd:'32强',id:87,t1:STANDINGS.K.w,t2:'3rd(L)',score:'2-0',venue:'堪萨斯城·箭头'},
+  {rnd:'32强',id:88,t1:STANDINGS.D.r,t2:STANDINGS.G.r,score:'1-1(3-2p)',venue:'达拉斯·AT&T'},
+  // Round of 16
+  {rnd:'16强',id:'R16-1',t1:'🇲🇽 墨西哥',t2:'🇨🇦 加拿大',score:'1-0',venue:'待定'},
+  {rnd:'16强',id:'R16-2',t1:'🇩🇪 德国',t2:'🇲🇦 摩洛哥',score:'2-1',venue:'待定'},
+  {rnd:'16强',id:'R16-3',t1:'🇳🇱 荷兰',t2:'🇪🇨 厄瓜多尔',score:'1-0',venue:'待定'},
+  {rnd:'16强',id:'R16-4',t1:'🇫🇷 法国',t2:'🇳🇴 挪威',score:'2-0',venue:'待定'},
+  {rnd:'16强',id:'R16-5',t1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',t2:'🇭🇷 克罗地亚',score:'2-1',venue:'待定'},
+  {rnd:'16强',id:'R16-6',t1:'🇪🇸 西班牙',t2:'🇦🇹 奥地利',score:'2-1',venue:'待定'},
+  {rnd:'16强',id:'R16-7',t1:'🇺🇸 美国',t2:'🇧🇪 比利时',score:'1-2',venue:'待定'},
+  {rnd:'16强',id:'R16-8',t1:'🇵🇹 葡萄牙',t2:'🇨🇴 哥伦比亚',score:'1-0',venue:'待定'},
+  // Quarter-finals
+  {rnd:'1/4决赛',id:'QF-1',t1:'🇲🇽 墨西哥',t2:'🇩🇪 德国',score:'1-2',venue:'待定'},
+  {rnd:'1/4决赛',id:'QF-2',t1:'🇳🇱 荷兰',t2:'🇫🇷 法国',score:'0-1',venue:'待定'},
+  {rnd:'1/4决赛',id:'QF-3',t1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰',t2:'🇪🇸 西班牙',score:'1-1(3-4p)',venue:'待定'},
+  {rnd:'1/4决赛',id:'QF-4',t1:'🇧🇪 比利时',t2:'🇵🇹 葡萄牙',score:'0-1',venue:'待定'},
+  // Semi-finals
+  {rnd:'半决赛',id:'SF-1',t1:'🇩🇪 德国',t2:'🇫🇷 法国',score:'1-2',venue:'达拉斯·AT&T'},
+  {rnd:'半决赛',id:'SF-2',t1:'🇪🇸 西班牙',t2:'🇵🇹 葡萄牙',score:'2-1',venue:'亚特兰大·梅赛德斯'},
+  // Final
+  {rnd:'决赛',id:'Final',t1:'🇫🇷 法国',t2:'🇪🇸 西班牙',score:'2-1',venue:'纽约/新泽西·大都会'}
+];
+
+// ========== RENDER CONTENDERS (enhanced) ==========
 function renderContenders(){
   const el=document.getElementById('contender-list');
   el.innerHTML=CONTENDERS.map(c=>{
     const rankClass=c.rank===1?'rank-1':c.rank===2?'rank-2':c.rank===3?'rank-3':'rank-default';
     const stars='⭐'.repeat(c.rating)+(c.rating<5?'':'');
+    const formHtml=c.form.split('-').map(r=>`<span class="extra-badge" style="background:${r==='W'?'rgba(34,197,94,.2)':r==='D'?'rgba(240,185,11,.2)':'rgba(239,68,68,.2)'};color:${r==='W'?'var(--accent-green)':r==='D'?'var(--gold-light)':'var(--accent-red)'}">${r}</span>`).join('');
     return `<div class="contender-card fade-in">
       <div class="top">
         <div class="rank ${rankClass}">${c.rank}</div>
         <span class="flag-name"><span class="flag">${c.flag}</span>${c.name}</span>
-        <span class="meta">Odds ${c.odds}</span>
+        <span class="meta">赔率 ${c.odds}</span>
       </div>
       <div class="bar-wrap">
         <div class="bar-track"><div class="bar-fill" style="width:${c.bar}%;background:${c.color}"></div></div>
         <span class="bar-label">${c.opta}</span>
       </div>
       <div style="display:flex;gap:16px;margin-top:6px;font-size:12px;color:var(--text-dim)">
-        <span>Opta概率: <strong style="color:var(--text-bright)">${c.opta}</strong></span>
-        <span>市场支持: <strong style="color:var(--text-bright)">${c.public}</strong></span>
-        <span>实力评级: ${stars}</span>
+        <span>Opta: <strong style="color:var(--text-bright)">${c.opta}</strong></span>
+        <span>市场: <strong style="color:var(--text-bright)">${c.public}</strong></span>
+        <span>评级: ${stars}</span>
+      </div>
+      <div class="extra-row">
+        <span>🔍 阵容深度: ${'🟢'.repeat(c.depth)}${'⚪'.repeat(5-c.depth)}</span>
+        <span>🏟️ 大赛经验: ${'🟢'.repeat(c.exp)}${'⚪'.repeat(5-c.exp)}</span>
+        <span>📋 战术体系: ${'🟢'.repeat(c.tact)}${'⚪'.repeat(5-c.tact)}</span>
+      </div>
+      <div class="extra-row">
+        <span>📊 近期状态: ${formHtml}</span>
+      </div>
+      <div class="extra-row">
+        <span>⚠️ 伤病情况: ${c.injury}</span>
       </div>
     </div>`;
   }).join('');
 }
+
+// ========== RENDER BRACKET ==========
+function renderBracket(){
+  const el=document.getElementById('bracket-container');
+  const rounds=[...new Set(BRACKET.map(g=>g.rnd))];
+  const roundOrder=['32强','16强','1/4决赛','半决赛','决赛'];
+  el.innerHTML=roundOrder.map(rn=>{
+    const games=BRACKET.filter(g=>g.rnd===rn);
+    return `<div class="bracket-rnd">
+      <div class="bracket-rnd-title">${rn}</div>
+      ${games.map(g=>{
+        const isFinal=g.id==='Final';
+        return `<div class="bracket-game${isFinal?' bracket-winner':''}">
+          <div class="bg-teams"><span>${g.t1}</span><span>vs</span><span>${g.t2}</span></div>
+          <div class="bg-score">${g.score}</div>
+          <div class="bg-meta">#${g.id} · ${g.venue||''}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+
+// ========== COUNTDOWN ==========
+function updateCountdown(){
+  const el=document.getElementById('countdown-digits');
+  if(!el)return;
+  const start=new Date('2026-06-11T15:00:00-05:00');
+  const now=new Date();
+  const diff=start-now;
+  if(diff<=0){el.innerHTML='🎉 世界杯进行中！';return;}
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  el.innerHTML=`<span class="cd-label">距开幕</span><span class="cd-num">${d}</span><span class="cd-label">天</span><span class="cd-num">${h}</span><span class="cd-label">时</span><span class="cd-num">${m}</span><span class="cd-label">分</span><span class="cd-num">${s}</span><span class="cd-label">秒</span>`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+// ========== USER PREDICTION ==========
+function initPrediction(){
+  const sel=document.getElementById('user-champion');
+  if(!sel)return;
+  CONTENDERS.forEach(c=>{
+    const opt=document.createElement('option');
+    opt.value=c.name;
+    opt.textContent=`${c.flag} ${c.name} (${c.opta})`;
+    sel.appendChild(opt);
+  });
+  document.getElementById('ai-champion-display').textContent='🇫🇷 法国 (Opta 12.78%)';
+}
+function submitPrediction(){
+  const sel=document.getElementById('user-champion');
+  const result=document.getElementById('pred-result');
+  const user=sel.value;
+  if(!user){result.textContent='请先选择一个球队！';result.className='pred-result mismatch show';return;}
+  const ai='法国';
+  result.className='pred-result show '+(user===ai?'match':'mismatch');
+  if(user===ai){
+    result.innerHTML='🎉 你跟AI想到一块去了！看好 '+user+' 夺冠！';
+  } else {
+    result.innerHTML='🤔 你看好 '+user+'，但AI预测 '+ai+' 更有机会。拭目以待！';
+  }
+}
+setTimeout(initPrediction,0);
 
 function renderGroup(key,data){
   const id='group'+key;
@@ -725,6 +920,7 @@ sections.forEach(s=>observer.observe(s));
 // ========== INIT ==========
 renderContenders();
 renderAllGroups();
+renderBracket();
 
 // Observe group cards after render
 setTimeout(()=>{
