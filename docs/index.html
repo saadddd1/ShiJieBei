@@ -1123,11 +1123,15 @@ function renderCalendar(){
       </div>
       ${day.matches.map(m=>{
         const predHtml=m.pred?`<span class="cm-score">🔮 ${m.score}</span>`:`<span class="cm-score">${m.score}</span>`;
+        const analysis = ANALYSIS[m.group]?.notes?.[m.round] || ANALYSIS[m.group]?.full?.[m.round] || '';
+        const nid = 'cnote_'+m.group+m.round+'_'+Math.random().toString(36).slice(2,5);
         return `<div class="calendar-match">
           <span class="cm-time">${m.date.split(',')[1]?.trim()||''}</span>
           <span class="cm-teams"><span style="font-weight:600">${m.home}</span><span style="color:var(--text-dim)">vs</span><span style="font-weight:600">${m.away}</span></span>
           ${predHtml}
           <span class="cm-venue">${m.venue}</span>
+          ${analysis ? `<button class="match-note-btn" onclick="toggleNote(this)">💡分析</button>` : ''}
+          ${analysis ? `<div class="match-note">${analysis}</div>` : ''}
         </div>`;
       }).join('')}
     </div>`;
