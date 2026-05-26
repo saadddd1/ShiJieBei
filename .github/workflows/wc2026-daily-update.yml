@@ -4,46 +4,40 @@ on:
   schedule:
     # 每天 UTC 12:00（北京时间 20:00）
     - cron: '0 12 * * *'
-  workflow_dispatch:  # 支持手动触发
+  workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 检出代码
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: 🐍 设置 Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: 🔍 抓取最新数据
-        run: |
-          echo "=== 运行数据更新脚本 ==="
-          bash auto-update.sh
+      - name: 🔍 抓取最新数据并更新HTML
+        run: bash auto-update.sh
 
       - name: 📤 提交并推送更新
         run: |
           git config user.name "WC2026 Bot"
           git config user.email "bot@wc2026.local"
           git add -A
-          if ! git diff --quiet || ! git diff --staged --quiet; then
+          if ! git diff --quiet --cached; then
             TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
-            git commit -m "📊 每日数据更新 ${TIMESTAMP}"
+            git commit -m "📊 数据更新 ${TIMESTAMP}"
             git push
-            echo "✅ 已提交更新"
+            echo "✅ 已推送更新"
           else
             echo "ℹ️ 无变更，跳过提交"
           fi
 
-      - name: 🏗️ 验证部署
+      - name: ✅ 验证
         run: |
-          echo "=== 验证文件状态 ==="
-          ls -la index.html docs/index.html
           echo "index.html: $(wc -c < index.html) bytes"
+          echo "docs/index.html: $(wc -c < docs/index.html) bytes"
