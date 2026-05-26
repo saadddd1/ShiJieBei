@@ -176,12 +176,12 @@ nav a:hover,nav a.active{background:rgba(240,185,11,.12);color:var(--gold-light)
 <!-- Hero -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge">⚽ 2026 FIFA World Cup</div>
-    <h1>The <span>World Cup</span> Returns</h1>
-    <p class="hero-sub">🇺🇸 United States · 🇨🇦 Canada · 🇲🇽 Mexico — 16 Cities</p>
+    <div class="hero-badge">⚽ 2026 世界杯</div>
+    <h1><span>世界杯</span>盛大回归</h1>
+    <p class="hero-sub">🇺🇸 美国 · 🇨🇦 加拿大 · 🇲🇽 墨西哥 — 16座城市</p>
     <div class="hero-flags">🇺🇸 🇨🇦 🇲🇽</div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="num">48</div><div class="label">Teams</div></div>
+      <div class="hero-stat"><div class="num">48</div><div class="label">参赛球队</div></div>
       <div class="hero-stat"><div class="num">12</div><div class="label">小组数</div></div>
       <div class="hero-stat"><div class="num">104</div><div class="label">比赛场次</div></div>
       <div class="hero-stat"><div class="num">16</div><div class="label">主办城市</div></div>
@@ -378,17 +378,17 @@ const GROUPS = {
     emoji:'🇲🇽🇿🇦🇰🇷🇨🇿',
     teams:[
       {flag:'🇲🇽',name:'Mexico',rank:'~15',coach:'Javier Aguirre',players:'Raúl Jiménez, S. Giménez, E. Álvarez',prob:'90%',probClass:'prob-high'},
-      {flag:'🇰🇷',name:'South Korea',rank:'~25',coach:'Hong Myung-bo',players:'Son Heung-min, Kim Min-jae, Lee Kang-in',prob:'55%',probClass:'prob-mid'},
-      {flag:'🇨🇿',name:'Czech Republic',rank:'~35',coach:'Miroslav Koubek',players:'Soucek, Hložek, Kinsky',prob:'45%',probClass:'prob-mid'},
-      {flag:'🇿🇦',name:'South Africa',rank:'~60',coach:'Hugo Broos',players:'Percy Tau, Lyle Foster, Zwane',prob:'10%',probClass:'prob-low'}
+      {flag:'🇰🇷',name:'韩国',rank:'~25',coach:'Hong Myung-bo',players:'Son Heung-min, Kim Min-jae, Lee Kang-in',prob:'55%',probClass:'prob-mid'},
+      {flag:'🇨🇿',name:'捷克',rank:'~35',coach:'Miroslav Koubek',players:'Soucek, Hložek, Kinsky',prob:'45%',probClass:'prob-mid'},
+      {flag:'🇿🇦',name:'南非',rank:'~60',coach:'Hugo Broos',players:'Percy Tau, Lyle Foster, Zwane',prob:'10%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 11, 3PM',home:'🇲🇽 Mexico',away:'🇿🇦 South Africa',score:'2-0',pred:'预测',venue:'Mexico City · Estadio Azteca'},
-      {round:1,date:'Jun 11, 10PM',home:'🇰🇷 South Korea',away:'🇨🇿 Czech Republic',score:'1-1',pred:'预测',venue:'Guadalajara · Estadio Akron'},
-      {round:2,date:'Jun 18, 12PM',home:'🇨🇿 Czech Republic',away:'🇿🇦 South Africa',score:'—',pred:'',venue:'Atlanta · Mercedes-Benz'},
-      {round:2,date:'Jun 18, 9PM',home:'🇲🇽 Mexico',away:'🇰🇷 South Korea',score:'—',pred:'',venue:'Guadalajara · Estadio Akron'},
-      {round:3,date:'Jun 24, 9PM',home:'🇨🇿 Czech Republic',away:'🇲🇽 Mexico',score:'—',pred:'',venue:'Mexico City · Estadio Azteca'},
-      {round:3,date:'Jun 24, 9PM',home:'🇿🇦 South Africa',away:'🇰🇷 South Korea',score:'—',pred:'',venue:'Monterrey · Estadio BBVA'}
+      {round:1,date:'6月11日, 3PM',home:'🇲🇽 Mexico',away:'🇿🇦 South Africa',score:'2-0',pred:'预测',venue:'墨西哥城·Estadio Azteca'},
+      {round:1,date:'6月11日, 10PM',home:'🇰🇷 South Korea',away:'🇨🇿 Czech Republic',score:'1-1',pred:'预测',venue:'瓜达拉哈拉·Estadio Akron'},
+      {round:2,date:'6月18日, 12PM',home:'🇨🇿 Czech Republic',away:'🇿🇦 South Africa',score:'—',pred:'',venue:'亚特兰大·Mercedes-Benz'},
+      {round:2,date:'6月18日, 9PM',home:'🇲🇽 Mexico',away:'🇰🇷 South Korea',score:'—',pred:'',venue:'瓜达拉哈拉·Estadio Akron'},
+      {round:3,date:'6月24日, 9PM',home:'🇨🇿 Czech Republic',away:'🇲🇽 Mexico',score:'—',pred:'',venue:'墨西哥城·Estadio Azteca'},
+      {round:3,date:'6月24日, 9PM',home:'🇿🇦 South Africa',away:'🇰🇷 South Korea',score:'—',pred:'',venue:'蒙特雷·Estadio BBVA'}
     ]
   },
   B:{
@@ -401,12 +401,12 @@ const GROUPS = {
       {flag:'🇶🇦',name:'Qatar',rank:'~50',coach:'Julen Lopetegui',players:'Afif, Ali',prob:'5%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 12, 3PM',home:'🇨🇦 Canada',away:'🇧🇦 Bosnia',score:'1-1',pred:'预测',venue:'Toronto · BMO Field'},
-      {round:1,date:'Jun 13, 3PM',home:'🇶🇦 Qatar',away:'🇨🇭 Switzerland',score:'0-2',pred:'预测',venue:'San Francisco · Levi\'s Stadium'},
-      {round:2,date:'Jun 18, 3PM',home:'🇨🇭 Switzerland',away:'🇧🇦 Bosnia',score:'—',pred:'',venue:'Los Angeles · SoFi Stadium'},
-      {round:2,date:'Jun 18, 6PM',home:'🇨🇦 Canada',away:'🇶🇦 Qatar',score:'—',pred:'',venue:'Vancouver · BC Place'},
-      {round:3,date:'Jun 24, 3PM',home:'🇨🇭 Switzerland',away:'🇨🇦 Canada',score:'—',pred:'',venue:'Vancouver · BC Place'},
-      {round:3,date:'Jun 24, 3PM',home:'🇧🇦 Bosnia',away:'🇶🇦 Qatar',score:'—',pred:'',venue:'Seattle · Lumen Field'}
+      {round:1,date:'6月12日, 3PM',home:'🇨🇦 Canada',away:'🇧🇦 Bosnia',score:'1-1',pred:'预测',venue:'多伦多·BMO Field'},
+      {round:1,date:'6月13日, 3PM',home:'🇶🇦 Qatar',away:'🇨🇭 Switzerland',score:'0-2',pred:'预测',venue:'旧金山 · Levi\'s Stadium'},
+      {round:2,date:'6月18日, 3PM',home:'🇨🇭 Switzerland',away:'🇧🇦 Bosnia',score:'—',pred:'',venue:'洛杉矶·SoFi Stadium'},
+      {round:2,date:'6月18日, 6PM',home:'🇨🇦 Canada',away:'🇶🇦 Qatar',score:'—',pred:'',venue:'温哥华·BC'},
+      {round:3,date:'6月24日, 3PM',home:'🇨🇭 Switzerland',away:'🇨🇦 Canada',score:'—',pred:'',venue:'温哥华·BC'},
+      {round:3,date:'6月24日, 3PM',home:'🇧🇦 Bosnia',away:'🇶🇦 Qatar',score:'—',pred:'',venue:'西雅图·流明 Field'}
     ]
   },
   C:{
@@ -419,30 +419,30 @@ const GROUPS = {
       {flag:'🇭🇹',name:'Haiti',rank:'~80',coach:'Sébastien Migné',players:'Johnny Placide',prob:'<5%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 13, 6PM',home:'🇧🇷 Brazil',away:'🇲🇦 Morocco',score:'1-0',pred:'预测',venue:'NY/NJ · MetLife Stadium'},
-      {round:1,date:'Jun 13, 9PM',home:'🇭🇹 Haiti',away:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',score:'0-2',pred:'预测',venue:'Boston · Gillette Stadium'},
-      {round:2,date:'Jun 19, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',away:'🇲🇦 Morocco',score:'—',pred:'',venue:'Boston · Gillette Stadium'},
-      {round:2,date:'Jun 19, 9PM',home:'🇧🇷 Brazil',away:'🇭🇹 Haiti',score:'—',pred:'',venue:'Philadelphia · Lincoln Financial'},
-      {round:3,date:'Jun 24, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',away:'🇧🇷 Brazil',score:'—',pred:'',venue:'Miami · Hard Rock Stadium'},
-      {round:3,date:'Jun 24, 6PM',home:'🇲🇦 Morocco',away:'🇭🇹 Haiti',score:'—',pred:'',venue:'Atlanta · Mercedes-Benz'}
+      {round:1,date:'6月13日, 6PM',home:'🇧🇷 Brazil',away:'🇲🇦 Morocco',score:'1-0',pred:'预测',venue:'纽约/新泽西·MetLife Stadium'},
+      {round:1,date:'6月13日, 9PM',home:'🇭🇹 Haiti',away:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',score:'0-2',pred:'预测',venue:'波士顿·Gillette Stadium'},
+      {round:2,date:'6月19日, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',away:'🇲🇦 Morocco',score:'—',pred:'',venue:'波士顿·Gillette Stadium'},
+      {round:2,date:'6月19日, 9PM',home:'🇧🇷 Brazil',away:'🇭🇹 Haiti',score:'—',pred:'',venue:'费城·林肯'},
+      {round:3,date:'6月24日, 6PM',home:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',away:'🇧🇷 Brazil',score:'—',pred:'',venue:'迈阿密·硬石 Stadium'},
+      {round:3,date:'6月24日, 6PM',home:'🇲🇦 Morocco',away:'🇭🇹 Haiti',score:'—',pred:'',venue:'亚特兰大·Mercedes-Benz'}
     ]
   },
   D:{
     name:'Group D',
     emoji:'🇺🇸🇵🇾🇦🇺🇹🇷',
     teams:[
-      {flag:'🇺🇸',name:'USA',rank:'~16',coach:'M. Pochettino',players:'Pulisic, McKennie, T. Weah, Adams',prob:'70%',probClass:'prob-high'},
-      {flag:'🇹🇷',name:'Turkey',rank:'~19',coach:'Vincenzo Montella',players:'Çalhanoglu, Yıldız',prob:'60%',probClass:'prob-mid'},
-      {flag:'🇵🇾',name:'Paraguay',rank:'~50',coach:'Gustavo Alfaro',players:'Almirón',prob:'35%',probClass:'prob-mid'},
-      {flag:'🇦🇺',name:'Australia',rank:'~24',coach:'Tony Popovic',players:'—',prob:'35%',probClass:'prob-mid'}
+      {flag:'🇺🇸',name:'美国',rank:'~16',coach:'M. Pochettino',players:'Pulisic, McKennie, T. Weah, Adams',prob:'70%',probClass:'prob-high'},
+      {flag:'🇹🇷',name:'土耳其',rank:'~19',coach:'Vincenzo Montella',players:'Çalhanoglu, Yıldız',prob:'60%',probClass:'prob-mid'},
+      {flag:'🇵🇾',name:'巴拉圭',rank:'~50',coach:'Gustavo Alfaro',players:'Almirón',prob:'35%',probClass:'prob-mid'},
+      {flag:'🇦🇺',name:'澳大利亚',rank:'~24',coach:'Tony Popovic',players:'—',prob:'35%',probClass:'prob-mid'}
     ],
     matches:[
-      {round:1,date:'Jun 12, 9PM',home:'🇺🇸 USA',away:'🇵🇾 Paraguay',score:'1-0',pred:'预测',venue:'Los Angeles · SoFi Stadium'},
-      {round:1,date:'Jun 13, 12AM',home:'🇦🇺 Australia',away:'🇹🇷 Turkey',score:'0-1',pred:'预测',venue:'Vancouver · BC Place'},
-      {round:2,date:'Jun 19, 3PM',home:'🇺🇸 USA',away:'🇦🇺 Australia',score:'—',pred:'',venue:'Seattle · Lumen Field'},
-      {round:2,date:'Jun 19, 12AM',home:'🇹🇷 Turkey',away:'🇵🇾 Paraguay',score:'—',pred:'',venue:'San Francisco · Levi\'s Stadium'},
-      {round:3,date:'Jun 25, 10PM',home:'🇹🇷 Turkey',away:'🇺🇸 USA',score:'—',pred:'',venue:'Los Angeles · SoFi Stadium'},
-      {round:3,date:'Jun 25, 10PM',home:'🇵🇾 Paraguay',away:'🇦🇺 Australia',score:'—',pred:'',venue:'San Francisco · Levi\'s Stadium'}
+      {round:1,date:'6月12日, 9PM',home:'🇺🇸 USA',away:'🇵🇾 Paraguay',score:'1-0',pred:'预测',venue:'洛杉矶·SoFi Stadium'},
+      {round:1,date:'6月13日, 12AM',home:'🇦🇺 Australia',away:'🇹🇷 Turkey',score:'0-1',pred:'预测',venue:'温哥华·BC'},
+      {round:2,date:'6月19日, 3PM',home:'🇺🇸 USA',away:'🇦🇺 Australia',score:'—',pred:'',venue:'西雅图·流明 Field'},
+      {round:2,date:'6月19日, 12AM',home:'🇹🇷 Turkey',away:'🇵🇾 Paraguay',score:'—',pred:'',venue:'旧金山 · Levi\'s Stadium'},
+      {round:3,date:'6月25日, 10PM',home:'🇹🇷 Turkey',away:'🇺🇸 USA',score:'—',pred:'',venue:'洛杉矶·SoFi Stadium'},
+      {round:3,date:'6月25日, 10PM',home:'🇵🇾 Paraguay',away:'🇦🇺 Australia',score:'—',pred:'',venue:'旧金山 · Levi\'s Stadium'}
     ]
   },
   E:{
@@ -455,12 +455,12 @@ const GROUPS = {
       {flag:'🇨🇼',name:'Curaçao',rank:'~90',coach:'Dick Advocaat',players:'Tahith Chong, L. Bacuna',prob:'<1%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 14, 1PM',home:'🇩🇪 Germany',away:'🇨🇼 Curaçao',score:'5-0',pred:'预测',venue:'Houston · NRG Stadium'},
-      {round:1,date:'Jun 14, 7PM',home:'🇨🇮 Ivory Coast',away:'🇪🇨 Ecuador',score:'1-1',pred:'预测',venue:'Philadelphia · Lincoln Financial'},
-      {round:2,date:'Jun 20, 1PM',home:'🇩🇪 Germany',away:'🇨🇮 Ivory Coast',score:'—',pred:'',venue:'Toronto · BMO Field'},
-      {round:2,date:'Jun 20, 7PM',home:'🇪🇨 Ecuador',away:'🇨🇼 Curaçao',score:'—',pred:'',venue:'Kansas City · Arrowhead'},
-      {round:3,date:'Jun 25, 8PM',home:'🇨🇼 Curaçao',away:'🇨🇮 Ivory Coast',score:'—',pred:'',venue:'Philadelphia · Lincoln Financial'},
-      {round:3,date:'Jun 25, 8PM',home:'🇪🇨 Ecuador',away:'🇩🇪 Germany',score:'—',pred:'',venue:'NY/NJ · MetLife Stadium'}
+      {round:1,date:'6月14日, 1PM',home:'🇩🇪 Germany',away:'🇨🇼 Curaçao',score:'5-0',pred:'预测',venue:'休斯顿·NRG Stadium'},
+      {round:1,date:'6月14日, 7PM',home:'🇨🇮 Ivory Coast',away:'🇪🇨 Ecuador',score:'1-1',pred:'预测',venue:'费城·林肯'},
+      {round:2,date:'6月20日, 1PM',home:'🇩🇪 Germany',away:'🇨🇮 Ivory Coast',score:'—',pred:'',venue:'多伦多·BMO Field'},
+      {round:2,date:'6月20日, 7PM',home:'🇪🇨 Ecuador',away:'🇨🇼 Curaçao',score:'—',pred:'',venue:'堪萨斯城·箭头'},
+      {round:3,date:'6月25日, 8PM',home:'🇨🇼 Curaçao',away:'🇨🇮 Ivory Coast',score:'—',pred:'',venue:'费城·林肯'},
+      {round:3,date:'6月25日, 8PM',home:'🇪🇨 Ecuador',away:'🇩🇪 Germany',score:'—',pred:'',venue:'纽约/新泽西·MetLife Stadium'}
     ]
   },
   F:{
@@ -473,12 +473,12 @@ const GROUPS = {
       {flag:'🇹🇳',name:'Tunisia',rank:'~30',coach:'Sabri Lamouchi',players:'Hannibal Mejbri, Skhiri, Talbi',prob:'20%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 14, 4PM',home:'🇳🇱 Netherlands',away:'🇯🇵 Japan',score:'2-0',pred:'预测',venue:'Dallas · AT&T Stadium'},
-      {round:1,date:'Jun 14, 10PM',home:'🇸🇪 Sweden',away:'🇹🇳 Tunisia',score:'1-0',pred:'预测',venue:'Monterrey · Estadio BBVA'},
-      {round:2,date:'Jun 20, 4PM',home:'🇳🇱 Netherlands',away:'🇸🇪 Sweden',score:'—',pred:'',venue:'Houston · NRG Stadium'},
-      {round:2,date:'Jun 20, 10PM',home:'🇹🇳 Tunisia',away:'🇯🇵 Japan',score:'—',pred:'',venue:'Monterrey · Estadio BBVA'},
-      {round:3,date:'Jun 25, 10PM',home:'🇯🇵 Japan',away:'🇸🇪 Sweden',score:'—',pred:'',venue:'Dallas · AT&T Stadium'},
-      {round:3,date:'Jun 25, 10PM',home:'🇹🇳 Tunisia',away:'🇳🇱 Netherlands',score:'—',pred:'',venue:'Kansas City · Arrowhead'}
+      {round:1,date:'6月14日, 4PM',home:'🇳🇱 Netherlands',away:'🇯🇵 Japan',score:'2-0',pred:'预测',venue:'达拉斯·ATDallas · AT&TT Stadium'},
+      {round:1,date:'6月14日, 10PM',home:'🇸🇪 Sweden',away:'🇹🇳 Tunisia',score:'1-0',pred:'预测',venue:'蒙特雷·Estadio BBVA'},
+      {round:2,date:'6月20日, 4PM',home:'🇳🇱 Netherlands',away:'🇸🇪 Sweden',score:'—',pred:'',venue:'休斯顿·NRG Stadium'},
+      {round:2,date:'6月20日, 10PM',home:'🇹🇳 Tunisia',away:'🇯🇵 Japan',score:'—',pred:'',venue:'蒙特雷·Estadio BBVA'},
+      {round:3,date:'6月25日, 10PM',home:'🇯🇵 Japan',away:'🇸🇪 Sweden',score:'—',pred:'',venue:'达拉斯·ATDallas · AT&TT Stadium'},
+      {round:3,date:'6月25日, 10PM',home:'🇹🇳 Tunisia',away:'🇳🇱 Netherlands',score:'—',pred:'',venue:'堪萨斯城·箭头'}
     ]
   },
   G:{
@@ -491,12 +491,12 @@ const GROUPS = {
       {flag:'🇳🇿',name:'New Zealand',rank:'~100',coach:'Darren Bazeley',players:'Chris Wood',prob:'15%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 15, 3PM',home:'🇧🇪 Belgium',away:'🇪🇬 Egypt',score:'1-1',pred:'预测',venue:'Seattle · Lumen Field'},
-      {round:1,date:'Jun 15, 9PM',home:'🇮🇷 Iran',away:'🇳🇿 New Zealand',score:'1-0',pred:'预测',venue:'Los Angeles · SoFi Stadium'},
-      {round:2,date:'Jun 21, 3PM',home:'🇧🇪 Belgium',away:'🇮🇷 Iran',score:'—',pred:'',venue:'Los Angeles · SoFi Stadium'},
-      {round:2,date:'Jun 21, 10PM',home:'🇳🇿 New Zealand',away:'🇪🇬 Egypt',score:'—',pred:'',venue:'Vancouver · BC Place'},
-      {round:3,date:'Jun 26, 3PM',home:'🇪🇬 Egypt',away:'🇮🇷 Iran',score:'—',pred:'',venue:'Seattle · Lumen Field'},
-      {round:3,date:'Jun 26, 3PM',home:'🇳🇿 New Zealand',away:'🇧🇪 Belgium',score:'—',pred:'',venue:'Vancouver · BC Place'}
+      {round:1,date:'6月15日, 3PM',home:'🇧🇪 Belgium',away:'🇪🇬 Egypt',score:'1-1',pred:'预测',venue:'西雅图·流明 Field'},
+      {round:1,date:'6月15日, 9PM',home:'🇮🇷 Iran',away:'🇳🇿 New Zealand',score:'1-0',pred:'预测',venue:'洛杉矶·SoFi Stadium'},
+      {round:2,date:'6月21日, 3PM',home:'🇧🇪 Belgium',away:'🇮🇷 Iran',score:'—',pred:'',venue:'洛杉矶·SoFi Stadium'},
+      {round:2,date:'6月21日, 10PM',home:'🇳🇿 New Zealand',away:'🇪🇬 Egypt',score:'—',pred:'',venue:'温哥华·BC'},
+      {round:3,date:'6月26日, 3PM',home:'🇪🇬 Egypt',away:'🇮🇷 Iran',score:'—',pred:'',venue:'西雅图·流明 Field'},
+      {round:3,date:'6月26日, 3PM',home:'🇳🇿 New Zealand',away:'🇧🇪 Belgium',score:'—',pred:'',venue:'温哥华·BC'}
     ]
   },
   H:{
@@ -509,94 +509,94 @@ const GROUPS = {
       {flag:'🇨🇻',name:'Cape Verde',rank:'~70',coach:'Bubista',players:'—',prob:'5%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 15, 12PM',home:'🇪🇸 Spain',away:'🇨🇻 Cape Verde',score:'4-0',pred:'预测',venue:'Atlanta · Mercedes-Benz'},
-      {round:1,date:'Jun 15, 6PM',home:'🇸🇦 Saudi Arabia',away:'🇺🇾 Uruguay',score:'0-2',pred:'预测',venue:'Miami · Hard Rock Stadium'},
-      {round:2,date:'Jun 21, 12PM',home:'🇪🇸 Spain',away:'🇸🇦 Saudi Arabia',score:'—',pred:'',venue:'Atlanta · Mercedes-Benz'},
-      {round:2,date:'Jun 21, 6PM',home:'🇺🇾 Uruguay',away:'🇨🇻 Cape Verde',score:'—',pred:'',venue:'Miami · Hard Rock Stadium'},
-      {round:3,date:'Jun 26, 8PM',home:'🇨🇻 Cape Verde',away:'🇸🇦 Saudi Arabia',score:'—',pred:'',venue:'Houston · NRG Stadium'},
-      {round:3,date:'Jun 26, 8PM',home:'🇺🇾 Uruguay',away:'🇪🇸 Spain',score:'—',pred:'',venue:'Guadalajara · Estadio Akron'}
+      {round:1,date:'6月15日, 12PM',home:'🇪🇸 Spain',away:'🇨🇻 Cape Verde',score:'4-0',pred:'预测',venue:'亚特兰大·Mercedes-Benz'},
+      {round:1,date:'6月15日, 6PM',home:'🇸🇦 Saudi Arabia',away:'🇺🇾 Uruguay',score:'0-2',pred:'预测',venue:'迈阿密·硬石 Stadium'},
+      {round:2,date:'6月21日, 12PM',home:'🇪🇸 Spain',away:'🇸🇦 Saudi Arabia',score:'—',pred:'',venue:'亚特兰大·Mercedes-Benz'},
+      {round:2,date:'6月21日, 6PM',home:'🇺🇾 Uruguay',away:'🇨🇻 Cape Verde',score:'—',pred:'',venue:'迈阿密·硬石 Stadium'},
+      {round:3,date:'6月26日, 8PM',home:'🇨🇻 Cape Verde',away:'🇸🇦 Saudi Arabia',score:'—',pred:'',venue:'休斯顿·NRG Stadium'},
+      {round:3,date:'6月26日, 8PM',home:'🇺🇾 Uruguay',away:'🇪🇸 Spain',score:'—',pred:'',venue:'瓜达拉哈拉·Estadio Akron'}
     ]
   },
   I:{
     name:'Group I',
     emoji:'🇫🇷🇸🇳🇮🇶🇳🇴',
     teams:[
-      {flag:'🇫🇷',name:'France',rank:'~1',coach:'Didier Deschamps',players:'Mbappé, Dembélé, Griezmann, Saliba',prob:'90%',probClass:'prob-high'},
-      {flag:'🇳🇴',name:'Norway',rank:'~20',coach:'Ståle Solbakken',players:'Haaland, Ødegaard',prob:'60%',probClass:'prob-mid'},
-      {flag:'🇸🇳',name:'Senegal',rank:'~22',coach:'Pape Thiaw',players:'Mané, Koulibaly',prob:'45%',probClass:'prob-mid'},
-      {flag:'🇮🇶',name:'Iraq',rank:'~60',coach:'Graham Arnold',players:'Aymen Hussein, Ali Jasim',prob:'5%',probClass:'prob-low'}
+      {flag:'🇫🇷',name:'法国',rank:'~1',coach:'Didier Deschamps',players:'Mbappé, Dembélé, Griezmann, Saliba',prob:'90%',probClass:'prob-high'},
+      {flag:'🇳🇴',name:'挪威',rank:'~20',coach:'Ståle Solbakken',players:'Haaland, Ødegaard',prob:'60%',probClass:'prob-mid'},
+      {flag:'🇸🇳',name:'塞内加尔',rank:'~22',coach:'Pape Thiaw',players:'Mané, Koulibaly',prob:'45%',probClass:'prob-mid'},
+      {flag:'🇮🇶',name:'伊拉克',rank:'~60',coach:'Graham Arnold',players:'Aymen Hussein, Ali Jasim',prob:'5%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 16, 3PM',home:'🇫🇷 France',away:'🇸🇳 Senegal',score:'2-0',pred:'预测',venue:'NY/NJ · MetLife Stadium'},
-      {round:1,date:'Jun 16, 6PM',home:'🇮🇶 Iraq',away:'🇳🇴 Norway',score:'0-3',pred:'预测',venue:'Boston · Gillette Stadium'},
-      {round:2,date:'Jun 22, 5PM',home:'🇳🇴 Norway',away:'🇸🇳 Senegal',score:'—',pred:'',venue:'NY/NJ · MetLife Stadium'},
-      {round:2,date:'Jun 22, 8PM',home:'🇫🇷 France',away:'🇮🇶 Iraq',score:'—',pred:'',venue:'Philadelphia · Lincoln Financial'},
-      {round:3,date:'Jun 26, 12PM',home:'🇳🇴 Norway',away:'🇫🇷 France',score:'—',pred:'',venue:'Boston · Gillette Stadium'},
-      {round:3,date:'Jun 26, 12PM',home:'🇸🇳 Senegal',away:'🇮🇶 Iraq',score:'—',pred:'',venue:'Toronto · BMO Field'}
+      {round:1,date:'6月16日, 3PM',home:'🇫🇷 France',away:'🇸🇳 Senegal',score:'2-0',pred:'预测',venue:'纽约/新泽西·MetLife Stadium'},
+      {round:1,date:'6月16日, 6PM',home:'🇮🇶 Iraq',away:'🇳🇴 Norway',score:'0-3',pred:'预测',venue:'波士顿·Gillette Stadium'},
+      {round:2,date:'6月22日, 5PM',home:'🇳🇴 Norway',away:'🇸🇳 Senegal',score:'—',pred:'',venue:'纽约/新泽西·MetLife Stadium'},
+      {round:2,date:'6月22日, 8PM',home:'🇫🇷 France',away:'🇮🇶 Iraq',score:'—',pred:'',venue:'费城·林肯'},
+      {round:3,date:'6月26日, 12PM',home:'🇳🇴 Norway',away:'🇫🇷 France',score:'—',pred:'',venue:'波士顿·Gillette Stadium'},
+      {round:3,date:'6月26日, 12PM',home:'🇸🇳 Senegal',away:'🇮🇶 Iraq',score:'—',pred:'',venue:'多伦多·BMO Field'}
     ]
   },
   J:{
     name:'Group J',
     emoji:'🇦🇷🇩🇿🇦🇹🇯🇴',
     teams:[
-      {flag:'🇦🇷',name:'Argentina',rank:'~3',coach:'Lionel Scaloni',players:'Messi, Lautaro, Álvarez, Enzo, Martinez',prob:'92%',probClass:'prob-high'},
+      {flag:'🇦🇷',name:'阿根廷',rank:'~3',coach:'Lionel Scaloni',players:'Messi, Lautaro, Álvarez, Enzo, Martinez',prob:'92%',probClass:'prob-high'},
       {flag:'🇦🇹',name:'Austria',rank:'~25',coach:'Ralf Rangnick',players:'Sabitzer, Alaba, Laimer',prob:'65%',probClass:'prob-mid'},
-      {flag:'🇩🇿',name:'Algeria',rank:'~45',coach:'V. Petković',players:'Mahrez, Bennacer, Benrahma',prob:'30%',probClass:'prob-low'},
+      {flag:'🇩🇿',name:'阿尔及利亚',rank:'~45',coach:'V. Petković',players:'Mahrez, Bennacer, Benrahma',prob:'30%',probClass:'prob-low'},
       {flag:'🇯🇴',name:'Jordan',rank:'~70',coach:'Jamal Sellami',players:'—',prob:'8%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 16, 9PM',home:'🇦🇷 Argentina',away:'🇩🇿 Algeria',score:'2-0',pred:'预测',venue:'Kansas City · Arrowhead'},
-      {round:1,date:'Jun 17, 12AM',home:'🇦🇹 Austria',away:'🇯🇴 Jordan',score:'2-0',pred:'预测',venue:'San Francisco · Levi\'s Stadium'},
-      {round:2,date:'Jun 22, 1PM',home:'🇦🇷 Argentina',away:'🇦🇹 Austria',score:'—',pred:'',venue:'Dallas · AT&T Stadium'},
-      {round:2,date:'Jun 22, 11PM',home:'🇯🇴 Jordan',away:'🇩🇿 Algeria',score:'—',pred:'',venue:'San Francisco · Levi\'s Stadium'},
-      {round:3,date:'Jun 27, 10PM',home:'🇩🇿 Algeria',away:'🇦🇹 Austria',score:'—',pred:'',venue:'Kansas City · Arrowhead'},
-      {round:3,date:'Jun 27, 10PM',home:'🇯🇴 Jordan',away:'🇦🇷 Argentina',score:'—',pred:'',venue:'Dallas · AT&T Stadium'}
+      {round:1,date:'6月16日, 9PM',home:'🇦🇷 Argentina',away:'🇩🇿 Algeria',score:'2-0',pred:'预测',venue:'堪萨斯城·箭头'},
+      {round:1,date:'6月17日, 12AM',home:'🇦🇹 Austria',away:'🇯🇴 Jordan',score:'2-0',pred:'预测',venue:'旧金山 · Levi\'s Stadium'},
+      {round:2,date:'6月22日, 1PM',home:'🇦🇷 Argentina',away:'🇦🇹 Austria',score:'—',pred:'',venue:'达拉斯·ATDallas · AT&TT Stadium'},
+      {round:2,date:'6月22日, 11PM',home:'🇯🇴 Jordan',away:'🇩🇿 Algeria',score:'—',pred:'',venue:'旧金山 · Levi\'s Stadium'},
+      {round:3,date:'6月27日, 10PM',home:'🇩🇿 Algeria',away:'🇦🇹 Austria',score:'—',pred:'',venue:'堪萨斯城·箭头'},
+      {round:3,date:'6月27日, 10PM',home:'🇯🇴 Jordan',away:'🇦🇷 Argentina',score:'—',pred:'',venue:'达拉斯·ATDallas · AT&TT Stadium'}
     ]
   },
   K:{
     name:'Group K',
     emoji:'🇵🇹🇨🇩🇺🇿🇨🇴',
     teams:[
-      {flag:'🇵🇹',name:'Portugal',rank:'~6',coach:'Roberto Martínez',players:'Cristiano Ronaldo, B.Silva, Leão, Dias',prob:'85%',probClass:'prob-high'},
+      {flag:'🇵🇹',name:'葡萄牙',rank:'~6',coach:'Roberto Martínez',players:'Cristiano Ronaldo, B.Silva, Leão, Dias',prob:'85%',probClass:'prob-high'},
       {flag:'🇨🇴',name:'Colombia',rank:'~14',coach:'Néstor Lorenzo',players:'JRo, Díaz, Mina',prob:'65%',probClass:'prob-mid'},
       {flag:'🇨🇩',name:'DR Congo',rank:'~65',coach:'S. Desabre',players:'—',prob:'25%',probClass:'prob-low'},
       {flag:'🇺🇿',name:'Uzbekistan',rank:'~55',coach:'Fabio Cannavaro',players:'—',prob:'20%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 17, 1PM',home:'🇵🇹 Portugal',away:'🇨🇩 DR Congo',score:'3-0',pred:'预测',venue:'Houston · NRG Stadium'},
-      {round:1,date:'Jun 17, 10PM',home:'🇺🇿 Uzbekistan',away:'🇨🇴 Colombia',score:'0-2',pred:'预测',venue:'Mexico City · Estadio Azteca'},
-      {round:2,date:'Jun 23, 1PM',home:'🇵🇹 Portugal',away:'🇺🇿 Uzbekistan',score:'—',pred:'',venue:'Houston · NRG Stadium'},
-      {round:2,date:'Jun 23, 10PM',home:'🇨🇴 Colombia',away:'🇨🇩 DR Congo',score:'—',pred:'',venue:'Guadalajara · Estadio Akron'},
-      {round:3,date:'Jun 27, 7:30PM',home:'🇨🇴 Colombia',away:'🇵🇹 Portugal',score:'—',pred:'',venue:'Miami · Hard Rock Stadium'},
-      {round:3,date:'Jun 27, 7:30PM',home:'🇨🇩 DR Congo',away:'🇺🇿 Uzbekistan',score:'—',pred:'',venue:'Atlanta · Mercedes-Benz'}
+      {round:1,date:'6月17日, 1PM',home:'🇵🇹 Portugal',away:'🇨🇩 DR Congo',score:'3-0',pred:'预测',venue:'休斯顿·NRG Stadium'},
+      {round:1,date:'6月17日, 10PM',home:'🇺🇿 Uzbekistan',away:'🇨🇴 Colombia',score:'0-2',pred:'预测',venue:'墨西哥城·Estadio Azteca'},
+      {round:2,date:'6月23日, 1PM',home:'🇵🇹 Portugal',away:'🇺🇿 Uzbekistan',score:'—',pred:'',venue:'休斯顿·NRG Stadium'},
+      {round:2,date:'6月23日, 10PM',home:'🇨🇴 Colombia',away:'🇨🇩 DR Congo',score:'—',pred:'',venue:'瓜达拉哈拉·Estadio Akron'},
+      {round:3,date:'6月27日, 7:30PM',home:'🇨🇴 Colombia',away:'🇵🇹 Portugal',score:'—',pred:'',venue:'迈阿密·硬石 Stadium'},
+      {round:3,date:'6月27日, 7:30PM',home:'🇨🇩 DR Congo',away:'🇺🇿 Uzbekistan',score:'—',pred:'',venue:'亚特兰大·Mercedes-Benz'}
     ]
   },
   L:{
     name:'Group L',
     emoji:'🏴󠁧󠁢󠁥󠁮󠁧󠁿🇭🇷🇬🇭🇵🇦',
     teams:[
-      {flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'England',rank:'~4',coach:'Thomas Tuchel',players:'Kane, Bellingham, Foden, Saka, Rice',prob:'85%',probClass:'prob-high'},
-      {flag:'🇭🇷',name:'Croatia',rank:'~15',coach:'Zlatko Dalić',players:'Modrić, Kovačić, Gvardiol',prob:'55%',probClass:'prob-mid'},
+      {flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'英格兰',rank:'~4',coach:'Thomas Tuchel',players:'Kane, Bellingham, Foden, Saka, Rice',prob:'85%',probClass:'prob-high'},
+      {flag:'🇭🇷',name:'克罗地亚',rank:'~15',coach:'Zlatko Dalić',players:'Modrić, Kovačić, Gvardiol',prob:'55%',probClass:'prob-mid'},
       {flag:'🇬🇭',name:'Ghana',rank:'~50',coach:'Carlos Queiroz',players:'Thomas, Kudus, Ayew',prob:'35%',probClass:'prob-mid'},
       {flag:'🇵🇦',name:'Panama',rank:'~55',coach:'T. Christiansen',players:'—',prob:'10%',probClass:'prob-low'}
     ],
     matches:[
-      {round:1,date:'Jun 17, 4PM',home:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',away:'🇭🇷 Croatia',score:'2-1',pred:'预测',venue:'Dallas · AT&T Stadium'},
-      {round:1,date:'Jun 17, 7PM',home:'🇬🇭 Ghana',away:'🇵🇦 Panama',score:'2-0',pred:'预测',venue:'Toronto · BMO Field'},
-      {round:2,date:'Jun 23, 4PM',home:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',away:'🇬🇭 Ghana',score:'—',pred:'',venue:'Boston · Gillette Stadium'},
-      {round:2,date:'Jun 23, 7PM',home:'🇵🇦 Panama',away:'🇭🇷 Croatia',score:'—',pred:'',venue:'Toronto · BMO Field'},
-      {round:3,date:'Jun 27, 5PM',home:'🇵🇦 Panama',away:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',score:'—',pred:'',venue:'NY/NJ · MetLife Stadium'},
-      {round:3,date:'Jun 27, 5PM',home:'🇭🇷 Croatia',away:'🇬🇭 Ghana',score:'—',pred:'',venue:'Philadelphia · Lincoln Financial'}
+      {round:1,date:'6月17日, 4PM',home:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',away:'🇭🇷 Croatia',score:'2-1',pred:'预测',venue:'达拉斯·ATDallas · AT&TT Stadium'},
+      {round:1,date:'6月17日, 7PM',home:'🇬🇭 Ghana',away:'🇵🇦 Panama',score:'2-0',pred:'预测',venue:'多伦多·BMO Field'},
+      {round:2,date:'6月23日, 4PM',home:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',away:'🇬🇭 Ghana',score:'—',pred:'',venue:'波士顿·Gillette Stadium'},
+      {round:2,date:'6月23日, 7PM',home:'🇵🇦 Panama',away:'🇭🇷 Croatia',score:'—',pred:'',venue:'多伦多·BMO Field'},
+      {round:3,date:'6月27日, 5PM',home:'🇵🇦 Panama',away:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',score:'—',pred:'',venue:'纽约/新泽西·MetLife Stadium'},
+      {round:3,date:'6月27日, 5PM',home:'🇭🇷 Croatia',away:'🇬🇭 Ghana',score:'—',pred:'',venue:'费城·林肯'}
     ]
   }
 };
 
 const CONTENDERS = [
   {rank:1,flag:'🇪🇸',name:'Spain',odds:'+450~500',opta:'16.08%',public:'13.9%',rating:5,bar:100,color:'#f0b90b'},
-  {rank:2,flag:'🇫🇷',name:'France',odds:'+470~500',opta:'12.78%',public:'14.0%',rating:5,bar:79,color:'#3b82f6'},
-  {rank:3,flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'England',odds:'+550~650',opta:'11.01%',public:'13.4%',rating:5,bar:68,color:'#ef4444'},
-  {rank:4,flag:'🇦🇷',name:'Argentina',odds:'+800~950',opta:'10.02%',public:'6.9%',rating:4,bar:62,color:'#22c55e'},
-  {rank:5,flag:'🇵🇹',name:'Portugal',odds:'+1000~1100',opta:'6.84%',public:'10.2%',rating:4,bar:43,color:'#a855f7'},
+  {rank:2,flag:'🇫🇷',name:'法国',odds:'+470~500',opta:'12.78%',public:'14.0%',rating:5,bar:79,color:'#3b82f6'},
+  {rank:3,flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'英格兰',odds:'+550~650',opta:'11.01%',public:'13.4%',rating:5,bar:68,color:'#ef4444'},
+  {rank:4,flag:'🇦🇷',name:'阿根廷',odds:'+800~950',opta:'10.02%',public:'6.9%',rating:4,bar:62,color:'#22c55e'},
+  {rank:5,flag:'🇵🇹',name:'葡萄牙',odds:'+1000~1100',opta:'6.84%',public:'10.2%',rating:4,bar:43,color:'#a855f7'},
   {rank:6,flag:'🇧🇷',name:'Brazil',odds:'+750~800',opta:'6.48%',public:'8.1%',rating:4,bar:40,color:'#f59e0b'},
   {rank:7,flag:'🇩🇪',name:'Germany',odds:'+1100~1400',opta:'5.66%',public:'5.5%',rating:3,bar:35,color:'#6366f1'},
   {rank:8,flag:'🇳🇱',name:'Netherlands',odds:'+1800~2100',opta:'3.84%',public:'3.2%',rating:3,bar:24,color:'#ec4899'}
@@ -634,8 +634,8 @@ function renderGroup(key,data){
       <div class="flag-big">${t.flag}</div>
       <div class="tname">${t.name}</div>
       <div class="tfifa">FIFA Rank ${t.rank}</div>
-      <div class="info-row"><strong>Coach:</strong> ${t.coach}</div>
-      <div class="info-row"><strong>Key Players:</strong> ${t.players}</div>
+      <div class="info-row"><strong>主教练:</strong> ${t.coach}</div>
+      <div class="info-row"><strong>核心球员:</strong> ${t.players}</div>
       <div style="margin-top:6px"><span class="prob-badge ${t.probClass}">Advance ${t.prob}</span></div>
     </div>
   `).join('');
@@ -644,7 +644,7 @@ function renderGroup(key,data){
     const hl=m.pred?' match-highlight':'';
     const predHtml=m.pred?`<span class="pred-score">🔮 ${m.score}</span>`:`<span style="color:var(--text-dim)">${m.score}</span>`;
     return `<div class="match-item${hl}">
-      <span class="round">M${m.round}</span>
+      <span class="round">第${m.round}轮</span>
       <span class="teams">
         <span style="font-weight:600">${m.home}</span>
         <span class="vs">vs</span>
@@ -664,8 +664,8 @@ function renderGroup(key,data){
     </div>
     <div class="group-card-body">
       <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab(this,'teams-${key}')">🏟️ Teams</button>
-        <button class="tab-btn" onclick="switchTab(this,'matches-${key}')">⚔️ Matches</button>
+        <button class="tab-btn active" onclick="switchTab(this,'teams-${key}')">🏟️ 球队信息</button>
+        <button class="tab-btn" onclick="switchTab(this,'matches-${key}')">⚔️ 对阵赛程</button>
       </div>
       <div class="tab-content active" id="teams-${key}">
         <div class="team-grid">${teamsHtml}</div>
